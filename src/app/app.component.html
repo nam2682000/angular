@@ -1,19 +1,4 @@
-<main class="main">
-  <div class="content">
-      <button mat-flat-button color="primary" (click)="openDialog()">Add use</button>
-      <button mat-flat-button color="warn" (click)="togetherUser()">name</button>
-
-      <ng-container *ngIf="isShowUser; else elseTemplate">
-        <!-- Content to display when isShowUser is true -->
-        <p>User info is hidden</p>
-      </ng-container>
-      
-      <ng-template #elseTemplate>
-        <!-- Content to display when isShowUser is false -->
-        <p>Age: {{user.age}}</p>
-        <p>Name: {{user.name}}</p>
-      </ng-template>
-      
-  </div>
+<main class="main container">
+  <app-header></app-header>
+  <router-outlet />
 </main>
-<router-outlet />
