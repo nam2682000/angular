@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Dialog with elements</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input [(ngModel)]="user.name" matInput type="text" placeholder="Name" value="" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Age</mat-label>
+    <input [(ngModel)]="user.age" matInput type="number" placeholder="Age" value="" required>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button (click)="save()">Add</button>
+
+</mat-dialog-actions>
