@@ -70,14 +70,14 @@
                 <a routerLink="/user/{{element.id}}/edit">
                     <mat-icon>edit</mat-icon>
                 </a>
-                <a routerLink="/user/{{element.id}}/delete">
+                <span (click)="openDialog('0ms', '0ms', element.id)">
                     <mat-icon>delete</mat-icon>
-                </a>
+                  </span>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    </table> 
 
     <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons aria-label="Select page of periodic elements">
     </mat-paginator>

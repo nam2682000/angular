@@ -9,14 +9,21 @@ import { UserInterface } from '../app/Interface/user-interface';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  apiUrlUsers: string = 'https://jsonplaceholder.typicode.com/users';
-  apiUrlUserAdd: string = 'https://jsonplaceholder.typicode.com/users';
-  apiUrlUserUpdate: string = 'https://jsonplaceholder.typicode.com/users';
-  apiUrlUserDelete: string = 'https://jsonplaceholder.typicode.com/users';
+  private apiUrlUsers: string = 'https://jsonplaceholder.typicode.com/users';
+  private apiUrlUserAdd: string = 'https://jsonplaceholder.typicode.com/users';
+  private apiUrlUserUpdate: string = 'https://jsonplaceholder.typicode.com/users';
+  private apiUrlUserDelete: string = 'https://jsonplaceholder.typicode.com/users';
 
   getUsers(): Observable<UserInterface[]> {
     return this.http.get<UserInterface[]>(this.apiUrlUsers);
   }
+
+  // Get request
+  getUserById(id: number): Observable<UserInterface> {
+    const url = `${this.apiUrlUsers}/${id}`;
+    return this.http.get<UserInterface>(url);
+  }
+
 
   // POST request
   addUser(post: UserInterface): Observable<UserInterface> {
@@ -24,13 +31,14 @@ export class ApiService {
   }
 
   // PUT request
-  updatePost(id: number, post: UserInterface): Observable<UserInterface> {
+  updateUser(id: number, post: UserInterface): Observable<UserInterface> {
     const url = `${this.apiUrlUserUpdate}/${id}`;
     return this.http.put<UserInterface>(url, post);
   }
+  
 
   // DELETE request
-  deletePost(id: number): Observable<UserInterface> {
+  deleteUser(id: number): Observable<UserInterface> {
     const url = `${this.apiUrlUserDelete}/${id}`;
     return this.http.delete<UserInterface>(url);
   }

@@ -7,11 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar';
+import {MatCardModule} from '@angular/material/card';
+import { MatSnackBar} from '@angular/material/snack-bar';
 import { lastValueFrom } from 'rxjs';
 
 @Component({
@@ -23,6 +20,7 @@ import { lastValueFrom } from 'rxjs';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    MatCardModule
   ],
   templateUrl: './user-add.component.html',
   styleUrl: './user-add.component.scss'
