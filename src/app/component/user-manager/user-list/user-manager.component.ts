@@ -2,7 +2,7 @@ import { ApiService } from '../../../../Service/api.service';
 import { AfterViewInit, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { UserInterface } from '../../../Interface/user-interface';
+import { IUser } from '../../../Interface/user-interface';
 import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -40,7 +40,7 @@ export class UserManagerComponent implements OnInit, AfterViewInit {
     private _snackBar:MatSnackBar
   ) { }
   displayedColumns: string[] = ['id', 'name', 'username', 'phone','email','company','website','action'];
-  dataSource = new MatTableDataSource<UserInterface>();
+  dataSource = new MatTableDataSource<IUser>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -60,7 +60,7 @@ export class UserManagerComponent implements OnInit, AfterViewInit {
     });
   }
 
-  async deleteUser(id:number): Promise<UserInterface> {
+  async deleteUser(id:number): Promise<IUser> {
     return await lastValueFrom(this.service.deleteUser(id));
   }
 

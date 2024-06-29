@@ -1,5 +1,5 @@
 import { ApiService } from './../../../../Service/api.service';
-import { UserInterface } from './../../../Interface/user-interface';
+import { IUser } from './../../../Interface/user-interface';
 import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,7 +27,7 @@ import { lastValueFrom } from 'rxjs';
 })
 export class UserAddComponent implements OnInit {
   userForm: FormGroup;
-  payload!: UserInterface;
+  payload!: IUser;
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -101,7 +101,7 @@ export class UserAddComponent implements OnInit {
   }
 
 
-  async addUser(user: UserInterface): Promise<boolean> {
+  async addUser(user: IUser): Promise<boolean> {
     try {
       const result = await lastValueFrom(this._service.addUser(user));
       return !!result;
@@ -110,6 +110,7 @@ export class UserAddComponent implements OnInit {
       return false;
     }
   }
+  
   updateErrorMessage(controlName: string): string {
     const control = this.userForm.get(controlName);
     control?.invalid

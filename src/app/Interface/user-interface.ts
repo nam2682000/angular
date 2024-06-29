@@ -1,4 +1,4 @@
-export interface UserInterface {
+export interface IUser{
     id: number;
     name: string;
     username: string;
@@ -21,3 +21,13 @@ export interface UserInterface {
         bs?: string;
     }
 };
+
+export interface ILogin{
+    userName:string;
+    password:string;
+}
+
+export interface IToken{
+    token:string;
+}
+

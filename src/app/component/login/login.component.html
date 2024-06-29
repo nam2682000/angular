@@ -4,17 +4,18 @@
           <mat-card-title>Login</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <form class="text-center">
+            <form class="text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div>
                     <mat-form-field class="full-width">
                         <mat-label>User Name</mat-label>
-                        <input required matInput>
+                        <input formControlName="userName" required matInput>
+                        @if (loginForm.get('userName')?.invalid) {<mat-error >User name invalid</mat-error>}
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field class="full-width">
                         <mat-label>Enter your password</mat-label>
-                        <input required matInput [type]="hide() ? 'password' : 'text'" />
+                        <input formControlName="password" required matInput [type]="hide() ? 'password' : 'text'" />
                         <button type="button"
                             mat-icon-button
                             matSuffix
@@ -24,10 +25,13 @@
                             >
                             <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
+                        @if (loginForm.get('password')?.invalid) {<mat-error >Password name invalid</mat-error>}
                     </mat-form-field>
                 </div>
-                <button type="button" mat-raised-button color="primary">Login</button>
+                <button mat-raised-button color="primary">Login</button>
             </form>
+
+            <button (click)="callApi()" mat-raised-button color="primary">Call Api</button>
         </mat-card-content>
       </mat-card>
 </ng-container>

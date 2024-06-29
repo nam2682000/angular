@@ -1,5 +1,5 @@
 import { ApiService } from './../../../../Service/api.service';
-import { UserInterface } from './../../../Interface/user-interface';
+import { IUser } from './../../../Interface/user-interface';
 import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,7 +28,7 @@ import { lastValueFrom } from 'rxjs';
 export class UserUpdateComponent implements OnInit {
 
   userForm:FormGroup;
-  payload!:UserInterface;
+  payload!:IUser;
   userId!:number;
 
   constructor(
@@ -124,7 +124,7 @@ export class UserUpdateComponent implements OnInit {
   }
 
 
-  async getUserById(id:number):Promise<UserInterface | null> {
+  async getUserById(id:number):Promise<IUser | null> {
     try {
       const result = await lastValueFrom(this._service.getUserById(id));
       return result;
