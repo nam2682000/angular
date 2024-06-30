@@ -1,4 +1,4 @@
-import { ApiService } from '../../../../Service/api.service';
+import { UserService } from '../../../../Service/user.service';
 import { AfterViewInit, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -34,7 +34,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UserManagerComponent implements OnInit, AfterViewInit {
   constructor(
-    private service: ApiService,
+    private service: UserService,
     private _liveAnnouncer: LiveAnnouncer,
     private _dialog :MatDialog,
     private _snackBar:MatSnackBar

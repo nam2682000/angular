@@ -1,4 +1,4 @@
-import { ApiService } from './../../../../Service/api.service';
+import { UserService } from '../../../../Service/user.service';
 import { IUser } from './../../../Interface/user-interface';
 import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,7 +31,7 @@ export class UserAddComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private _service: ApiService,
+    private _service: UserService,
     private _snackBar: MatSnackBar
   ) {
     this.userForm = this.fb.group({

@@ -5,9 +5,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ApiService } from '../../../Service/api.service';
+import { UserService } from '../../../Service/user.service';
 import { ILogin } from '../../Interface/user-interface';
 import { lastValueFrom } from 'rxjs';
+import { AuthService } from '../../../Service/auth.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -17,7 +18,9 @@ import { lastValueFrom } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
 
-  _service = inject(ApiService);
+  _authService = inject(AuthService);
+  _userService = inject(UserService);
+
 
   loginForm: FormGroup;
   constructor(private fb: FormBuilder,) {
@@ -41,19 +44,19 @@ export class LoginComponent implements OnInit {
       if(token){
         localStorage.setItem('authToken',token);
       }
-      console.log('token',token);
+      console.log('authToken',token);
     }
   }
 
   async login(loginForm :ILogin):Promise<string>{
-    const token = await lastValueFrom(this._service.login(loginForm));
+    const token = await lastValueFrom(this._authService.login(loginForm));
     return token.token;
   }
 
 
   async callApi(): Promise<void> {
     try {
-      const result = await lastValueFrom(this._service.GetAllUser());
+      const result = await lastValueFrom(this._userService.GetAllUser());
       console.log('result', result);
     } catch (error) {
       console.error('Error:', error);
